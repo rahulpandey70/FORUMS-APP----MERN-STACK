@@ -1,6 +1,6 @@
 # FORUMS-APP----MERN-STACK
 
-### This is an open source project you can change or add new things and send a pull request.
+### This is an open source project you can change or add new things.
 
 # DEMO 
 
