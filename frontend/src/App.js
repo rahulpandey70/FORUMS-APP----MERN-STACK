@@ -20,7 +20,6 @@ import { getNotifies } from './redux/actions/notifyAction'
 import io from 'socket.io-client'
 import { GLOBALTYPES } from './redux/actions/globalTypes'
 import SocketClient from './SocketClient'
-import Peer from 'peerjs'
 
 
 function App() {
@@ -42,14 +41,6 @@ function App() {
       dispatch(getNotifies(auth.token))
     }
   }, [dispatch, auth.token])
-
-  useEffect(() => {
-    const newPeer = new Peer(undefined, {
-      path: '/', secure: true
-    })
-    
-    dispatch({ type: GLOBALTYPES.PEER, payload: newPeer })
-  },[dispatch])
 
   return (
     <Router>
