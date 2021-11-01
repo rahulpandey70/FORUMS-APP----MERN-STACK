@@ -9,7 +9,7 @@ https://qstntime.herokuapp.com/
 
 ### Clone this project using this command.
 
-> git clone (url)
+> git clone (Repo url)
 
 ### And then install dependencies seperately for both node js and react js using this command
 
