@@ -32,7 +32,7 @@ const RegisterPage = () => {
             <img
               className="loginSignup__heroImage"
               src={Discussion}
-              alt="Mumble loginSignup Hero"
+              alt="loginSignup Hero"
             />
           </div>
         </div>

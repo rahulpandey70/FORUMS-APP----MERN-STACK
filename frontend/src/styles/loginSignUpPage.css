@@ -5,15 +5,11 @@
 .loginSignup {
   position: relative;
   min-height: 100vh;
+  min-width: -200vw;
 }
 
 .loginSignup__header {
   padding: 3rem 0;
-  background-color: var(--color-light);
-}
-
-.dark-theme .loginSignup__header {
-  background-color: var(--color-main-light);
 }
 
 .loginSignup__header > .container {
@@ -28,35 +24,22 @@
 }
 
 .loginSignup__headerLogo > h1 {
-  font-size: 2.5rem;
+  font-size: 2.4rem;
   text-transform: uppercase;
-  margin-left: 1rem;
-  font-weight: var(--font-bold);
+  margin-left: 0.7rem;
+  font-weight: 500;
   font-family: "Kaushan Script", sans-serif;
 }
 
 .loginSignup__headerTitle {
   margin-top: 1rem;
-  color: var(--color-text);
+  color: #737373;
   font-size: 3.5rem;
   text-transform: uppercase;
 }
 
 .loginSignup__headerSubtitle {
   font-size: 1.2rem;
-}
-
-.loginSignup__themeIcon,
-.loginSignup__footerIcon {
-  font-size: 3rem;
-  cursor: pointer;
-}
-
-.loginSignup__footerIcon {
-  position: relative;
-  display: inline-block;
-  border-bottom: 0.25px dotted var(--color-main);
-  margin-left: 1.5rem;
 }
 
 .loginSignup__body {
@@ -71,40 +54,12 @@
   flex-basis: 36%;
 }
 
-.loginSignup__social {
-  border-top: 2px solid var(--color-main-light);
-  margin-top: 2rem;
-  padding-top: 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .loginSignup__heroImage {
   height: 34vw;
   position: absolute;
   top: -18vh;
   right: -8vw;
 }
-
-.loginSignup__footer {
-  width: 100%;
-  padding: 0.5rem 0;
-  background-color: var(--color-main-light);
-  overflow-x: hidden;
-}
-
-.loginSignup__footer > .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.loginSignup__footerLeft {
-  display: flex;
-  align-items: center;
-}
-
 .loginSignup__footerLeft .loginSignup__footerIcon {
   font-size: 2rem;
 }
@@ -123,11 +78,6 @@
 .loginSignup__footerRight p {
   font-size: 1.25rem;
 }
-
-.loginSignup__headerRight {
-  -webkit-tap-highlight-color: transparent;
-}
-
 
 /* Media Queries */
 
