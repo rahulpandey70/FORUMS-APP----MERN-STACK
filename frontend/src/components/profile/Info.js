@@ -1,92 +1,90 @@
-import React, { useState, useEffect } from 'react'
-import Avatar from '../Avatar'
-import EditProfile from './EditProfile'
-import FollowBtn from '../FollowBtn'
-import Followers from '../profile/Followers'
-import Following from '../profile/Following'
-import { GLOBALTYPES } from '../../redux/actions/globalTypes'
+import React, { useState, useEffect } from "react";
+import Avatar from "../Avatar";
+import EditProfile from "./EditProfile";
+import FollowBtn from "../FollowBtn";
+import Followers from "../profile/Followers";
+import Following from "../profile/Following";
+import { GLOBALTYPES } from "../../redux/actions/globalTypes";
 
-const Info = ({id, auth, profile, dispatch}) => {
-    const [userData, setUserData] = useState([])
-    const [onEdit, setOnEdit] = useState(false)
+const Info = ({ id, auth, profile, dispatch }) => {
+  const [userData, setUserData] = useState([]);
+  const [onEdit, setOnEdit] = useState(false);
 
-    const [showFollowers, setShowFollowers] = useState(false)
-    const [showFollowing, setShowFollowing] = useState(false)
+  const [showFollowers, setShowFollowers] = useState(false);
+  const [showFollowing, setShowFollowing] = useState(false);
 
-    useEffect(() => {
-        if(id === auth.user._id){
-            setUserData([auth.user])
-        }else{
-            const newData = profile.users.filter(user => user._id === id)
-            setUserData(newData)
-        }
-    }, [id, auth, dispatch, profile.users])
+  useEffect(() => {
+    if (id === auth.user._id) {
+      setUserData([auth.user]);
+    } else {
+      const newData = profile.users.filter((user) => user._id === id);
+      setUserData(newData);
+    }
+  }, [id, auth, dispatch, profile.users]);
 
-    useEffect(() => {
-        if(showFollowers || showFollowing || onEdit){
-            dispatch({ type: GLOBALTYPES.MODAL, payload: true})
-        }else{
-            dispatch({ type: GLOBALTYPES.MODAL, payload: false})
-        }
-    }, [showFollowers, showFollowing, onEdit, dispatch])
-    
-    return (
-        <div className="info">
-            {
-                userData.map(user => (
-                    <div className="info_container" key={user._id}>
-                        <Avatar src={user.avatar} size="super-avatar"/>
-                
-                        <div className="info_content">
-                            
-                            <div className="info_content_title">
-                                <h2>{user.username}</h2>
+  useEffect(() => {
+    if (showFollowers || showFollowing || onEdit) {
+      dispatch({ type: GLOBALTYPES.MODAL, payload: true });
+    } else {
+      dispatch({ type: GLOBALTYPES.MODAL, payload: false });
+    }
+  }, [showFollowers, showFollowing, onEdit, dispatch]);
 
-                                {
-                                    user._id === auth.user._id
-                                    ? <button className="btn btn-outline-info"
-                                    onClick={() => setOnEdit(true)}>
-                                        Edit Profile
-                                    </button>
-                                    : <FollowBtn user={user} />
-                                }
+  return (
+    <div className="info">
+      {userData.map((user) => (
+        <div className="info_container" key={user._id}>
+          <Avatar src={user.avatar} size="super-avatar" />
 
-                            </div>
+          <div className="info_content">
+            <div className="info_content_title">
+              <h2>{user.username}</h2>
 
-                            <div className="follow_btn">
-                                <span  className="mr-4" onClick={() => setShowFollowers(true)}>
-                                    {user.followers.length} Followers
-                                </span>
-                                <span className="ml-4" onClick={() => setShowFollowing(true)}>
-                                    {user.following.length} Following
-                                </span>
-                            </div>
+              {user._id === auth.user._id ? (
+                <button
+                  className="btn btn-outline-info"
+                  onClick={() => setOnEdit(true)}
+                >
+                  Edit Profile
+                </button>
+              ) : (
+                <FollowBtn user={user} />
+              )}
+            </div>
 
-                                <h6>{user.fullname}</h6>
-                                <h6 className="m-0">{user.email}</h6>
-                                <p className="m-0">{user.about}</p>
+            <div className="follow_btn">
+              <span className="mr-4" onClick={() => setShowFollowers(true)}>
+                {user.followers.length} Followers
+              </span>
+              <span className="ml-4" onClick={() => setShowFollowing(true)}>
+                {user.following.length} Following
+              </span>
+            </div>
 
-                        </div>
+            <h6>{user.fullname}</h6>
+            <h6 className="m-0">{user.email}</h6>
+            <p className="m-0">{user.about}</p>
+          </div>
 
-                        {
-                            onEdit && <EditProfile setOnEdit={setOnEdit} />
-                        }
+          {onEdit && <EditProfile setOnEdit={setOnEdit} />}
 
-                        {
-                            showFollowers && 
-                            <Followers users={user.followers} setShowFollowers={setShowFollowers} />
-                        }
+          {showFollowers && (
+            <Followers
+              users={user.followers}
+              setShowFollowers={setShowFollowers}
+            />
+          )}
 
-                        {
-                            showFollowing && 
-                            <Following users={user.following} setShowFollowing={setShowFollowing} />
-                        }
-
-                    </div>
-                ))
-            }            
+          {showFollowing && (
+            <Following
+              users={user.following}
+              setShowFollowing={setShowFollowing}
+            />
+          )}
         </div>
-    )
-}
+      ))}
+    </div>
+  );
+};
 
-export default Info
+export default Info;
