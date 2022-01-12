@@ -2,7 +2,7 @@ import React from "react";
 import Status from "../components/home/Status";
 import Posts from "../components/home/Posts";
 import { useSelector } from "react-redux";
-import LoadIcon from "../images/loading.gif";
+import LoadIcon from "../images/loading.svg";
 import RightSideBar from "../components/home/RightSideBar";
 
 const Home = () => {
@@ -11,9 +11,8 @@ const Home = () => {
     <div className="home row mx-0">
       <div className="col-md-8">
         <Status />
-        <Posts />
         {homePosts.loading ? (
-          <img src={LoadIcon} alt="loading" className="d-block mx-auto" />
+          <img src={LoadIcon} alt="loading" className="d-block mx-auto" style={{height: "2rem"}} />
         ) : homePosts.result === 0 && homePosts.posts.length === 0 ? (
           <h2 className="text-center">No Post</h2>
         ) : (
