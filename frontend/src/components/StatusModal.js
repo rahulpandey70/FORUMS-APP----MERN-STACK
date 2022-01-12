@@ -45,7 +45,7 @@ const StatusModal = () => {
           <textarea
             name="content"
             value={content}
-            placeholder={`${auth.user.username}, Ask a Question!`}
+            placeholder={"Ask a Question!"}
             onChange={(e) => setContent(e.target.value)}
           />
         </div>

@@ -27,6 +27,12 @@
     border: none;
     outline: none;
     resize: none;
+    padding: 0.5rem;
+}
+
+.status_body textarea:focus-within {
+    outline: none;
+    background-color: #f5fcff;
 }
 
 
