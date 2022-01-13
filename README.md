@@ -6,4 +6,4 @@
 
 ### Run this app locally just follow these commands:-
 
-##### Clone this repo and install dependencies and run both(react and node) seperately.
+Clone this repo and install dependencies and run both(react and node) seperately.
