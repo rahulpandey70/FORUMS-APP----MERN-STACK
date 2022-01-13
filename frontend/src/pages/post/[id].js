@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getPost } from "../../redux/actions/postAction";
-import LoadIcon from "../../images/loading.gif";
+import LoadIcon from "../../images/loading.svg";
 import PostCard from "../../components/PostCard";
 
 const Post = () => {
@@ -24,7 +24,12 @@ const Post = () => {
   return (
     <div className="posts">
       {post.length === 0 && (
-        <img src={LoadIcon} alt="loading" className="d-block mx-auto my-4" />
+        <img
+          src={LoadIcon}
+          alt="loading"
+          className="d-block mx-auto my-4"
+          style={{ height: "2rem" }}
+        />
       )}
       {post.map((item) => (
         <PostCard key={item._id} post={item} />

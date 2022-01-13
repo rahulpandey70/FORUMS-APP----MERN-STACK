@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getDataAPI } from "../../utils/fetchData";
 import { GLOBALTYPES } from "../../redux/actions/globalTypes";
 import UserCard from "../../components/UserCard";
-import LoadIcon from "../../images/loading.gif";
+import LoadIcon from "../../images/loading.svg";
 
 const Search = () => {
   const [search, setSearch] = useState("");
@@ -61,7 +61,14 @@ const Search = () => {
       <button type="submit" style={{ display: "none" }}>
         Submit
       </button>
-      {load && <img className="loading" src={LoadIcon} alt="Loading" />}
+      {load && (
+        <img
+          className="loading"
+          src={LoadIcon}
+          alt="Loading"
+          style={{ height: "2rem" }}
+        />
+      )}
 
       <div className="users">
         {search &&

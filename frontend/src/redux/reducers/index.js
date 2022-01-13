@@ -8,6 +8,7 @@ import modal from "./modalReducer";
 import detailPost from "./detailPostReducer";
 import suggestions from "./suggestionsReducer";
 import notify from "./notifyReducer";
+import discover from "./discoverReducer";
 import socket from "./socketReducer";
 
 export default combineReducers({
@@ -20,5 +21,6 @@ export default combineReducers({
   detailPost,
   suggestions,
   notify,
+  discover,
   socket,
 });
