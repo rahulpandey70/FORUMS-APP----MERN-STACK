@@ -1,12 +1,10 @@
-# FORUMS-APP--MERN-STACK
+## This is an open source project you can add new features.
 
-> This is an open source project you can add new features.
-
-## DEMO Visit On This Link
+### DEMO Visit On This Link
 
 https://qstntime.herokuapp.com/
 
-![Screenshots](../frontend/src/images/demp.png)
+![Screenshots](https://github.com/rahulpandey70/ForumsApp/blob/master/frontend/src/images/demo.png)
 
 ### Run this app locally just follow these commands:-
 
