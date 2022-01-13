@@ -9,6 +9,7 @@
     outline: none;
     flex: 1;
     overflow: auto;
+    transition: all .3s ease-in-out
 }
 
 .comment_input .postBtn {
@@ -26,8 +27,9 @@
 .comment_card .comment_content {
     background: #eee;
     padding: 7px;
-    border-radius: 10px;
+    border-radius: 25px;
     border-top-left-radius: 0;
+    border-bottom-right-radius: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;

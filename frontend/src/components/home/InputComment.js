@@ -35,7 +35,7 @@ const InputComment = ({ children, post, onReply, setOnReply }) => {
       {children}
       <input
         type="text"
-        placeholder="Add your comments"
+        placeholder="Add Comments"
         value={content}
         onChange={(e) => setContent(e.target.value)}
       />

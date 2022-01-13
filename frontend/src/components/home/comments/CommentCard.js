@@ -115,7 +115,7 @@ const CommentCard = ({ children, comment, post, commentId }) => {
             </small>
 
             <small
-              className="font-weight-bold mr-3"
+              className="font-weight-small mr-3"
               style={{ cursor: "pointer" }}
             >
               {comment.likes.length} likes
