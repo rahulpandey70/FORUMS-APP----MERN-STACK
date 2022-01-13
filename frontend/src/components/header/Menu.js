@@ -32,7 +32,6 @@ const Menu = () => {
           <div
             className="dropdown-menu"
             aria-labelledby="navbarDropdown"
-            style={{ transform: "translateX(40px)" }}
           >
             <NotifyModal />
           </div>
