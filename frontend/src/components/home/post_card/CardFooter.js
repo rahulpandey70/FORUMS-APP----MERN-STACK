@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import Share from "../../../images/share.svg";
 import LikeButton from "../../LikeButton";
 import { useSelector, useDispatch } from "react-redux";
