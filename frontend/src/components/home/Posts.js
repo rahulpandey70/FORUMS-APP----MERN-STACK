@@ -24,7 +24,6 @@ const Posts = () => {
       type: POST_TYPES.GET_POSTS,
       payload: { ...res.data, page: homePosts.page + 1 },
     });
-
     setLoadMore(false);
   };
 

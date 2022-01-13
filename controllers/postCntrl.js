@@ -4,7 +4,7 @@ const Comments = require("../models/commentModel");
 const postCntrl = {
   createPost: async (req, res) => {
     try {
-      const { content, images } = req.body;
+      const { content } = req.body;
 
       if (content.length === 0) {
         return res.status(400).json({ msg: "Please add your content." });
@@ -12,7 +12,6 @@ const postCntrl = {
 
       const newPost = new Posts({
         content,
-        images,
         user: req.user._id,
       });
 
@@ -32,7 +31,7 @@ const postCntrl = {
   getPosts: async (req, res) => {
     try {
       const posts = await Posts.find({
-        user: [...req.user.following, req.user._id],
+        users: [...req.user.following, req.user._id],
       })
         .sort("-createdAt")
         .populate("user likes", "avatar username fullname followers")
@@ -159,26 +158,6 @@ const postCntrl = {
       res.json({ post });
     } catch (error) {
       return res.status(500).json({ msg: error.message });
-    }
-  },
-  getPostsDicover: async (req, res) => {
-    try {
-      const newArr = [...req.user.following, req.user._id];
-
-      const num = req.query.num || 9;
-
-      const posts = await Posts.aggregate([
-        { $match: { user: { $nin: newArr } } },
-        { $sample: { size: Number(num) } },
-      ]);
-
-      return res.json({
-        msg: "Success!",
-        result: posts.length,
-        posts,
-      });
-    } catch (err) {
-      return res.status(500).json({ msg: err.message });
     }
   },
   deletePost: async (req, res) => {
