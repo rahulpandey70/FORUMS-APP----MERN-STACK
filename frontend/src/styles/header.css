@@ -28,12 +28,12 @@
     height: 4.5rem;
 }
 
-.header .menu .dropdown-menu{
-    position: absolute;
-    left: inherit;
-    right: 0;
-}
+/* --------navbar dropdown-------- */
 
+
+
+
+/* ---------- Search ------------ */
 #search-form {
     margin: 0 2.5rem;
     display: flex;

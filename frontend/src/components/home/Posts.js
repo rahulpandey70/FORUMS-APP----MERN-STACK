@@ -1,22 +1,22 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import PostCard from "../PostCard";
 
-import LoadMoreBtn from "../LoadMorebtn";
-import LoadMore from "../../images/loadmore.svg";
+import LoadIcon from "../../images/loadmore.svg";
+import LoadMoreBtn from "../../components/LoadMorebtn";
 import { getDataAPI } from "../../utils/fetchData";
 import { POST_TYPES } from "../../redux/actions/postAction";
 
 const Posts = () => {
   const { homePosts, auth } = useSelector((state) => state);
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
 
-  const [loadMore, setLoadMore] = useState(false);
+  const [load, setLoad] = useState(false);
 
   const handleLoadMore = async () => {
-    setLoadMore(true);
+    setLoad(true);
     const res = await getDataAPI(
-      `posts?limit=${homePosts.page * 7}`,
+      `posts?limit=${homePosts.page * 5}`,
       auth.token
     );
 
@@ -24,7 +24,8 @@ const Posts = () => {
       type: POST_TYPES.GET_POSTS,
       payload: { ...res.data, page: homePosts.page + 1 },
     });
-    setLoadMore(false);
+
+    setLoad(false);
   };
 
   return (
@@ -33,14 +34,19 @@ const Posts = () => {
         <PostCard key={post._id} post={post} />
       ))}
 
-      {loadMore && (
-        <img src={LoadMore} alt="Loading" className="d-block mx-auto" />
+      {load && (
+        <img
+          src={LoadIcon}
+          alt="loading"
+          className="d-block mx-auto"
+          style={{ height: "2rem" }}
+        />
       )}
 
       <LoadMoreBtn
         result={homePosts.result}
         page={homePosts.page}
-        loadMore={loadMore}
+        load={load}
         handleLoadMore={handleLoadMore}
       />
     </div>

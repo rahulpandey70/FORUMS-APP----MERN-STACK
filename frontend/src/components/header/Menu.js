@@ -30,8 +30,9 @@ const Menu = () => {
             ></span>
           </span>
           <div
-            className="dropdown-menu"
+            className="dropdown-menu margin-right"
             aria-labelledby="navbarDropdown"
+            style={{transform: 'translateY(75px)'}}
           >
             <NotifyModal />
           </div>
