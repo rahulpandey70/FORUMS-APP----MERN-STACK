@@ -14,25 +14,26 @@ const Menu = () => {
       <ul className="navbar-nav flex-row">
         <li className="nav-item dropdown">
           <span
+            className="position-relative"
             id="navbarDropdown"
             role="button"
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
           >
-            <span
+            <i
               className="fa fa-bell"
               style={{
                 fontSize: "25px",
                 marginTop: "3px",
                 color: notify.data.length > 0 ? "crimson" : "white",
               }}
-            ></span>
+            ></i>
           </span>
           <div
             className="dropdown-menu"
             aria-labelledby="navbarDropdown"
-            style={{ transform: "translateY(75px)" }}
+            style={{ transform: "translateX(75px)" }}
           >
             <NotifyModal />
           </div>

@@ -30,17 +30,13 @@
 
 /* --------navbar dropdown-------- */
 
-.header .menu .dropdown-menu{
+.menu .dropdown-menu{
     position: absolute;
     left: inherit;
     right: 0;
 }
 
-.header .menu label{
-    cursor: pointer;
-}
-
-.header .menu .notify_length{
+.menu .notify_length{
     position: absolute;
     top: 45%;
     left: 50%;

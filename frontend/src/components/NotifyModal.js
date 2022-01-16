@@ -1,14 +1,9 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import Avatar from "./Avatar";
 import NoNotification from "../images/notice.png";
 import moment from "moment";
-import {
-  isReadNotify,
-  NOTIFY_TYPES,
-  deleteAllNotifies,
-} from "../redux/actions/notifyAction";
+import { isReadNotify, deleteAllNotifies } from "../redux/actions/notifyAction";
 
 const NotifyModal = () => {
   const { auth, notify } = useSelector((state) => state);
@@ -16,10 +11,6 @@ const NotifyModal = () => {
 
   const handleIsRead = (msg) => {
     dispatch(isReadNotify({ msg, auth }));
-  };
-
-  const handleSound = () => {
-    dispatch({ type: NOTIFY_TYPES.UPDATE_SOUND, payload: !notify.sound });
   };
 
   const handleDeleteAll = () => {
@@ -36,22 +27,9 @@ const NotifyModal = () => {
   };
 
   return (
-    <div style={{ minWidth: "300px" }}>
+    <div style={{ minWidth: "150px" }}>
       <div className="d-flex justify-content-between align-items-center px-3">
-        <h3>Notification</h3>
-        {notify.sound ? (
-          <i
-            className="fas fa-bell text-danger"
-            style={{ fontSize: "1.2rem", cursor: "pointer" }}
-            onClick={handleSound}
-          />
-        ) : (
-          <i
-            className="fas fa-bell-slash text-danger"
-            style={{ fontSize: "1.2rem", cursor: "pointer" }}
-            onClick={handleSound}
-          />
-        )}
+        <h4>Notification</h4>
       </div>
       <hr className="mt-0" />
       {notify.data.length === 0 && (
@@ -66,14 +44,10 @@ const NotifyModal = () => {
               className="d-flex text-dark align-items-center"
               onClick={() => handleIsRead(msg)}
             >
-              <Avatar src={msg.user.avatar} size="big-avatar" />
-
-              <div className="mx-1 flex-fill">
+              <div className="mx-2 flex-fill">
                 <div>
-                  <strong className="mr-1">{msg.user.username}</strong>
                   <span>{msg.text}</span>
                 </div>
-                {msg.content && <small>{msg.content.slice(0, 20)}...</small>}
               </div>
             </Link>
             <small className="text-muted d-flex justify-content-between px-2">

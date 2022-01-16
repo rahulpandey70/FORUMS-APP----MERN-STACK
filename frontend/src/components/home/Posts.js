@@ -39,7 +39,7 @@ const Posts = () => {
           src={LoadIcon}
           alt="loading"
           className="d-block mx-auto"
-          style={{ height: "3rem" }}
+          style={{ height: "2.5rem" }}
         />
       )}
 
