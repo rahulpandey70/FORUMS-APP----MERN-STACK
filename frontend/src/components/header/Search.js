@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getDataAPI } from "../../utils/fetchData";
 import { GLOBALTYPES } from "../../redux/actions/globalTypes";
 import UserCard from "../../components/UserCard";
-import LoadIcon from "../../images/loading.svg";
+import LoadIcon from "../../images/searchload.svg";
 
 const Search = () => {
   const [search, setSearch] = useState("");
@@ -66,7 +66,7 @@ const Search = () => {
           className="loading"
           src={LoadIcon}
           alt="Loading"
-          style={{ height: "2rem" }}
+          style={{ height: "1rem" }}
         />
       )}
 

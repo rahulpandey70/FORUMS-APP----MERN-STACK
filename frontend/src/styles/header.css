@@ -30,7 +30,29 @@
 
 /* --------navbar dropdown-------- */
 
+.header .menu .dropdown-menu{
+    position: absolute;
+    left: inherit;
+    right: 0;
+}
 
+.header .menu label{
+    cursor: pointer;
+}
+
+.header .menu .notify_length{
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+    font-size: 10px;
+}
+
+.menu .navbar-nav {
+    gap: 2rem;
+}
 
 
 /* ---------- Search ------------ */
@@ -65,9 +87,17 @@
     color: #8b8b8b;
 }
 
-.menu .navbar-nav {
-    gap: 2rem;
+#search-form .users{
+    position: absolute;
+    /* width: 100%; */
+    min-width: 17rem;
+    background: white;
+    max-height: calc(100vh - 150px);
+    overflow: auto;
+    margin-top: 8.7rem;
+    margin-left: -0.5rem;
 }
+
 
 /* Responsive */
 
