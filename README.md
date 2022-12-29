@@ -2,7 +2,5 @@
 
 > Click :star: if you like this project, Add new feature if you think it required and send PR.
 
-### DEMO.
-
 ![Screenshots](https://github.com/rahulpandey70/ForumsApp/blob/master/frontend/src/images/demo.png)
 
