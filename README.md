@@ -1,8 +1,8 @@
-## This is an open source project, Anybody can send PR for new UI design or new features.
+## This is a (MERN STACK) social media application, with user authentication.
 
-> Click :star: if you like this project, Pull request are highly appreciated
+> Click :star: if you like this project, feel free to send PR(Pull request).
 
-### DEMO.
+### DEMO
 
 ![Screenshots](./frontend/src/images/login.png)
 ![Screenshots](./frontend/src/images/demo.png)
