@@ -4,5 +4,6 @@
 
 ### DEMO
 
-![Screenshots](./frontend/src/images/login.png)
-![Screenshots](./frontend/src/images/demo.png)
+![Screenshots](login.png)
+
+![Screenshots](demo.png)
