@@ -4,6 +4,5 @@
 
 ### DEMO.
 
-![Screenshots](https://github.com/rahulpandey70/ForumsApp/blob/master/frontend/src/images/demo.png)
-
-
+![Screenshots](./frontend/src/images/login.png)
+![Screenshots](./frontend/src/images/demo.png)
