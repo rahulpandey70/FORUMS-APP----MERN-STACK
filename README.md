@@ -47,26 +47,14 @@ Pull this repo and create one `.env` file and Add MONGODB_URL, ACCESS_TOKEN_SECR
 Pull this repo and create one `.env` file and Add MONGODB_URL, ACCESS_TOKEN_SECRET and REFRESH_TOKEN_SECRET to your `.env` file
 
 ```
-    # To build container
-    docker-compose build
-
     # start container
-    docker-compose up
+    docker compose up
 
     # start services with detached mode
-    docker-compose -d up
-
-    # stop services
-    docker-compose stop
-
-    # kill services
-    docker-compose kill
-
-    # remove stopped containers
-    docker-compose rm
+    docker compose up -d
 
     # stop all contaners and remove images, volumes
-    docker-compose down
+    docker compose down
 ```
 
 ### DEMO
