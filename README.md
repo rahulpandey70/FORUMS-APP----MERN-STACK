@@ -20,7 +20,7 @@
 
 ## Getting Started:
 
-Pull this repo and create one `.env` file and Add MONGODB_URL, ACCESS_TOKEN_SECRET and REFRESH_TOKEN_SECRET to your `.env` file
+Pull this repo and create one `.env` file and Add MONGODB_URL, ACCESS_TOKEN_SECRET and REFRESH_TOKEN_SECRET to your `.env` file. And also change frontend package.json file proxy `node_api to localhost`
 
 ```
   # Install dependencies for server
@@ -44,7 +44,7 @@ Pull this repo and create one `.env` file and Add MONGODB_URL, ACCESS_TOKEN_SECR
 
 ## Getting Started With docker compose:
 
-Pull this repo and create one `.env` file and Add MONGODB_URL, ACCESS_TOKEN_SECRET and REFRESH_TOKEN_SECRET to your `.env` file
+Pull this repo and create one `.env` file and Add MONGODB_URL, ACCESS_TOKEN_SECRET and REFRESH_TOKEN_SECRET to your `.env` file. And also change frontend package.json file proxy `localhost to node_api`
 
 ```
     # start container
