@@ -6,83 +6,83 @@ import UserCard from "../../components/UserCard";
 import LoadIcon from "../../images/searchload.svg";
 
 const Search = () => {
-  const [search, setSearch] = useState("");
-  const [users, setUsers] = useState([]);
-  const [load, setLoad] = useState(false);
+	const [search, setSearch] = useState("");
+	const [users, setUsers] = useState([]);
+	const [load, setLoad] = useState(false);
 
-  const { auth } = useSelector((state) => state);
-  const dispatch = useDispatch();
+	const { auth } = useSelector((state) => state);
+	const dispatch = useDispatch();
 
-  const handleSearch = async (e) => {
-    e.preventDefault();
-    if (!search) return;
+	const handleSearch = async (e) => {
+		e.preventDefault();
+		if (!search) return;
 
-    try {
-      setLoad(true);
-      const res = await getDataAPI(`search?username=${search}`, auth.token);
-      setUsers(res.data.users);
-      setLoad(false);
-    } catch (err) {
-      dispatch({
-        type: GLOBALTYPES.ALERT,
-        payload: { error: err.response.data.msg },
-      });
-    }
-  };
+		try {
+			setLoad(true);
+			const res = await getDataAPI(`search?username=${search}`, auth.token);
+			setUsers(res.data.users);
+			setLoad(false);
+		} catch (err) {
+			dispatch({
+				type: GLOBALTYPES.ALERT,
+				payload: { error: err.response.data.msg },
+			});
+		}
+	};
 
-  const handleClose = () => {
-    setSearch("");
-    setUsers([]);
-  };
+	const handleClose = () => {
+		setSearch("");
+		setUsers([]);
+	};
 
-  return (
-    <form id="search-form" onSubmit={handleSearch}>
-      <i className="fas fa-search"></i>
-      <input
-        type="text"
-        name="search"
-        value={search}
-        autoFocus={true}
-        autoComplete="off"
-        placeholder="Search"
-        onChange={(e) =>
-          setSearch(e.target.value.toLowerCase().replace(/ /g, ""))
-        }
-      />
+	return (
+		<form id="search-form" onSubmit={handleSearch}>
+			<i className="fas fa-search"></i>
+			<input
+				type="text"
+				name="search"
+				value={search}
+				autoFocus={true}
+				autoComplete="off"
+				placeholder="Search"
+				onChange={(e) =>
+					setSearch(e.target.value.toLowerCase().replace(/ /g, ""))
+				}
+			/>
 
-      <div
-        className="close_search"
-        onClick={handleClose}
-        style={{ opacity: users.length === 0 ? 0 : 1, cursor: "pointer" }}
-      >
-        &times;
-      </div>
+			<div
+				className="close_search"
+				onClick={handleClose}
+				style={{ opacity: users.length === 0 ? 0 : 1, cursor: "pointer" }}
+			>
+				&times;
+			</div>
 
-      <button type="submit" style={{ display: "none" }}>
-        Submit
-      </button>
-      {load && (
-        <img
-          className="loading"
-          src={LoadIcon}
-          alt="Loading"
-          style={{ height: "1rem" }}
-        />
-      )}
+			<button type="submit" style={{ display: "none" }}>
+				Submit
+			</button>
+			{load && (
+				<img
+					className="loading"
+					src={LoadIcon}
+					alt="Loading"
+					style={{ height: "1.2rem" }}
+				/>
+			)}
 
-      <div className="users">
-        {search &&
-          users.map((user) => (
-            <UserCard
-              key={user._id}
-              user={user}
-              border="border"
-              handleClose={handleClose}
-            />
-          ))}
-      </div>
-    </form>
-  );
+			<div className="users">
+				{search &&
+					users.map((user) => (
+						<UserCard
+							key={user._id}
+							user={user}
+							border=""
+							handleClose={handleClose}
+						/>
+					))}
+			</div>
+		</form>
+	);
 };
 
 export default Search;
