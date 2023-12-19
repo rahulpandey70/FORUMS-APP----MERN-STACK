@@ -8,19 +8,17 @@ import modal from "./modalReducer";
 import detailPost from "./detailPostReducer";
 import suggestions from "./suggestionsReducer";
 import notify from "./notifyReducer";
-import discover from "./discoverReducer";
 import socket from "./socketReducer";
 
 export default combineReducers({
-  auth,
-  alert,
-  profile,
-  status,
-  homePosts,
-  modal,
-  detailPost,
-  suggestions,
-  notify,
-  discover,
-  socket,
+	auth,
+	alert,
+	profile,
+	status,
+	homePosts,
+	modal,
+	detailPost,
+	suggestions,
+	notify,
+	socket,
 });

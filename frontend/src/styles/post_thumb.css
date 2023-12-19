@@ -1,14 +1,29 @@
-.post_thumb{
-    background: white;
-    box-shadow: 0 0 5px #ddd;
+.post_thumb {
+    background: var(--color-bg);
     padding: 20px;
     border-radius: 5px;
-    border: 1px solid rgb(0, 0, 0, .125);
+    margin-bottom: 30px;
+    gap: 4px;
+    border: 1px solid var(--color-main);
 }
 
-.post_thumb .post_thumb_menu i{
-    color: #ddd;
+
+.card_post-display {
+    border-bottom: 1px solid var(--color-gray);
+    padding: 15px;
+    color: var(--color-white);
+}
+
+.card_post-display:hover {
+    color: #d0cccc;
+}
+
+.post_thumb_menu {
+    margin-top: -10px;
+}
+
+.post_thumb .post_thumb_menu i {
+    color: var(--color-text);
     opacity: 1;
-    cursor: not-allowed;
-    margin: 5px 5px;
+    margin: 15px 15px;
 }

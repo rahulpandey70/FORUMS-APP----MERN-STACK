@@ -1,6 +1,4 @@
-## MERN STACK social media application.
-
-<br>
+## Social media application.
 
 ## 🖥️ Tech Stack
 
@@ -18,9 +16,15 @@
 ![mongooose](https://img.shields.io/badge/Mongoose-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)&nbsp;
 ![jwt](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=JSON%20web%20tokens&logoColor=white)&nbsp;
 
+## UI Preview
+
+![login](./images/login.png)
+![register](./images/register.png)
+![homepage](./images/home.png)
+
 ## Getting Started:
 
-Pull this repo and create one `.env` file and Add MONGODB_URL, ACCESS_TOKEN_SECRET and REFRESH_TOKEN_SECRET to your `.env` file. And also change frontend package.json file proxy `node_api to localhost`
+Setup your `.env` file and install dependencies separately for backend and frontend.
 
 ```
   # Install dependencies for server
@@ -44,8 +48,6 @@ Pull this repo and create one `.env` file and Add MONGODB_URL, ACCESS_TOKEN_SECR
 
 ## Getting Started With docker compose:
 
-Pull this repo and create one `.env` file and Add MONGODB_URL, ACCESS_TOKEN_SECRET and REFRESH_TOKEN_SECRET to your `.env` file. And also change frontend package.json file proxy `localhost to node_api`
-
 ```
     # start container
     docker compose up
@@ -53,12 +55,6 @@ Pull this repo and create one `.env` file and Add MONGODB_URL, ACCESS_TOKEN_SECR
     # start services with detached mode
     docker compose up -d
 
-    # stop all contaners and remove images, volumes
+    # stop all containers and remove images, volumes
     docker compose down
 ```
-
-### DEMO
-
-![Login](login.png)
-
-![Home](demo.png)
