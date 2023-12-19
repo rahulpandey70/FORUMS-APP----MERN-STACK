@@ -30,7 +30,7 @@ const RightSideBar = () => {
 					src={LoadIcon}
 					alt="loading"
 					className="d-block mx-auto my-4"
-					style={{ height: "2rem" }}
+					style={{ height: "4rem" }}
 				/>
 			) : (
 				<div className="suggestions">

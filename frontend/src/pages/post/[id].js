@@ -6,36 +6,36 @@ import LoadIcon from "../../images/loading.svg";
 import PostCard from "../../components/PostCard";
 
 const Post = () => {
-  const { id } = useParams();
-  const [post, setPost] = useState([]);
+	const { id } = useParams();
+	const [post, setPost] = useState([]);
 
-  const { auth, detailPost } = useSelector((state) => state);
-  const dispatch = useDispatch();
+	const { auth, detailPost } = useSelector((state) => state);
+	const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getPost({ detailPost, id, auth }));
+	useEffect(() => {
+		dispatch(getPost({ detailPost, id, auth }));
 
-    if (detailPost.length > 0) {
-      const newArr = detailPost.filter((post) => post._id === id);
-      setPost(newArr);
-    }
-  }, [auth, detailPost, id, dispatch]);
+		if (detailPost.length > 0) {
+			const newArr = detailPost.filter((post) => post._id === id);
+			setPost(newArr);
+		}
+	}, [auth, detailPost, id, dispatch]);
 
-  return (
-    <div className="posts">
-      {post.length === 0 && (
-        <img
-          src={LoadIcon}
-          alt="loading"
-          className="d-block mx-auto my-4"
-          style={{ height: "2rem" }}
-        />
-      )}
-      {post.map((item) => (
-        <PostCard key={item._id} post={item} />
-      ))}
-    </div>
-  );
+	return (
+		<div className="posts">
+			{post.length === 0 && (
+				<img
+					src={LoadIcon}
+					alt="loading"
+					className="d-block mx-auto my-4"
+					style={{ height: "4rem" }}
+				/>
+			)}
+			{post.map((item) => (
+				<PostCard key={item._id} post={item} />
+			))}
+		</div>
+	);
 };
 
 export default Post;

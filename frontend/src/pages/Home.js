@@ -16,7 +16,7 @@ const Home = () => {
 						src={LoadIcon}
 						alt="loading"
 						className="d-block mx-auto"
-						style={{ height: "2rem" }}
+						style={{ height: "5rem" }}
 					/>
 				) : homePosts.result === 0 && homePosts.posts.length === 0 ? (
 					<h2 className="text-center">No Post</h2>

@@ -49,7 +49,7 @@ function App() {
 					{status && <StatusModal />}
 					{auth.token && <SocketClient />}
 
-					<PrivateRouter path="/" component={Home} />
+					<PrivateRouter exact path="/" component={Home} />
 
 					<Route
 						exact
