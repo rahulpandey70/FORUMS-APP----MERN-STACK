@@ -4,20 +4,30 @@
 }
 
 .comment_input input {
-    background: #f7f7f7;
-    border: none;
+    background: var(--color-sub);
+    color: var(--color-white);
     outline: none;
     flex: 1;
+    width: 20em;
+    height: 3em;
     overflow: auto;
+    border: 1px solid var(--color-main);
+    padding: 10px;
+    border-radius: 15px;
     transition: all .3s ease-in-out
 }
 
 .comment_input .postBtn {
-    border: none;
     outline: none;
-    background: #f7f7f7;
-    color: blue;
+    border: none;
+    margin-left: 5px;
+    background: var(--color-sub);
+    color: var(--color-white);
     font-weight: 600;
+}
+
+.comment_input .dropdown-menu {
+    transform: translate3d(-120px, -200px, 0px) !important;
 }
 
 .comment_display {
@@ -25,9 +35,11 @@
 }
 
 .comment_card .comment_content {
-    background: #eee;
+    background-color: var(--color-bg);
+    color: var(--color-white);
+    border: 0.5px solid var(--color-main);
     padding: 7px;
-    border-radius: 25px;
+    border-radius: 15px;
     border-top-left-radius: 0;
     border-bottom-right-radius: 0;
     display: flex;
@@ -35,33 +47,36 @@
     align-items: center;
 }
 
-.comment_card .comment_content .readMore{
-    cursor: pointer;
-    color: crimson;
+.comment_card .comment_content textarea {
+    width: 100%;
+    resize: none;
+    border: none;
+    outline: none;
+    background: var(--color-bg);
 }
 
-.comment_card .comment_content .nav-item{
+.comment_card .comment_content .readMore {
+    cursor: pointer;
+    color: var(--color-main);
+}
+
+.comment_card .comment_content .nav-item {
     cursor: pointer;
     opacity: 0;
 }
 
-.comment_card .comment_content:hover .nav-item{
+.comment_card .comment_content:hover .nav-item {
     opacity: 1;
 }
 
-.comment_card .comment_content .dropdown-menu{
+.comment_card .comment_content .dropdown-menu {
     position: absolute;
     right: 0;
+    width: 15rem;
     left: inherit;
 }
 
 .comment_card .comment_content .dropdown-item {
     display: flex;
     margin: 10px 0;
-}
-
-.comment_card .comment_content textarea {
-    width: 100%;
-    border: none;
-    outline: none;
 }

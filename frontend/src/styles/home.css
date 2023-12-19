@@ -1,13 +1,14 @@
 /* --------- Status ---------- */
-.status{
-    background: white;
-    box-shadow: 0 0 5px #ddd;
-    padding: 20px;
+.status {
+    background: var(--color-bg);
+    padding: 5px;
     border-radius: 5px;
-    border: 1px solid rgb(0, 0, 0, .125);
+    border: 1px solid var(--color-bg);
+    margin-bottom: 20px;
 }
-.status .statusBtn{
-    background: #f1f1f1;
+
+.status .statusBtn {
+    background: var(--color-white);
     border: none;
     outline: none;
     border-radius: 30px;
@@ -16,59 +17,75 @@
     text-align: left;
     margin: 0 5px;
 }
-.status .statusBtn:hover{
+
+.status .statusBtn:hover {
     background: #ddd;
 }
 
 /* ------------Posts ------ */
-.posts .card{
-    box-shadow: 0 0 4px #ddd;
+
+.card {
+    background-color: var(--color-sub);
 }
+
 /* --------- Post Card Header --------- */
-.posts .card_header{
+.posts .card_header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 25px;
+    color: var(--color-white);
 }
-.posts .card_header .card_name{
+
+.posts .card_header .card_name {
     transform: translateY(3px);
+    margin-left: 10px;
 }
-.posts .card_header .dropdown-menu{
+
+.posts .card_header .dropdown-menu {
     position: absolute;
-    right: 0;
+    background-color: var(--color-bg);
+    min-width: 15vw;
     left: inherit;
+    right: 0;
 }
-.posts .card_header .dropdown-item{
+
+.posts .card_header .dropdown-item {
     display: flex;
+    justify-content: center;
+    color: var(--color-white);
     margin: 5px 0;
 }
 
+.posts .card_header .dropdown-item:hover {
+    background-color: var(--color-sub);
+}
+
 /* ---------- Post Card Body ---------- */
-.posts .card_body-content{
+.posts .card_body-content {
     padding: 0 25px;
-    margin-top: -10px;
+    margin-top: -3px;
     margin-bottom: 10px;
 }
-.posts .card_body-content .readMore{
-    color: crimson;
+
+.posts .card_body-content .readMore {
+    color: var(--color-main);
     cursor: pointer;
 }
 
 /* ---------- Post Card Footer ---------- */
-.posts .card_icon_menu{
+.posts .card_icon_menu {
     display: flex;
     justify-content: space-between;
     padding: 0 15px;
 }
-.posts .card_icon_menu i{
+
+.posts .card_icon_menu i {
     font-size: 25px;
     margin: 10px;
     cursor: pointer;
 }
-.posts .card_icon_menu img{
-    width: 29px;
-    height: 28px;
-    transform: translate(5px, -5px);
-    opacity: 0.9;
+
+.posts .card_icon_menu i:hover {
+    color: var(--color-white);
 }
