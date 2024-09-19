@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { cn } from "@/lib/utils";
 import { Providers } from "@/redux/provider";
 import { siteConfig } from "@/config/site";
+import { FloatingButton } from "@/components/FloatingButton";
 
 const fontSans = FontSans({
 	subsets: ["latin"],
@@ -36,7 +37,10 @@ export default function RootLayout({
 			>
 				<Providers>
 					<Header />
-					{children}
+					<main className="relative">
+						{children}
+						<FloatingButton />
+					</main>
 				</Providers>
 			</body>
 		</html>
