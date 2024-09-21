@@ -1,14 +1,35 @@
+import { FeedCard } from "@/components/feed/FeedCard";
 import { LeftSidebar } from "@/components/LeftSidebar";
-import { UserInfo } from "@/components/UserInfo";
+import { RightSideProfile } from "@/components/profile/RIghtSideProfile";
+
+import { ChevronRight, Home } from "lucide-react";
+import { Breadcrumb } from "@/components/common/";
 
 const Profile = () => {
 	return (
-		<div className="md:px-[5vw] flex">
-			<div className="hidden md:flex sticky top-16 h-[calc(100vh-64px)] w-1/4">
-				<LeftSidebar />
-			</div>
-			<div className="w-full p-4 flex flex-col gap-2">
-				<UserInfo />
+		<div className="relative flex h-[calc(100vh-68px)] px-[5vw] gap-4 bg-background">
+			<LeftSidebar />
+			<div className="md:p-6 flex flex-col">
+				<Breadcrumb
+					homeElement={<Home size={16} />}
+					separator={
+						<span>
+							<ChevronRight size={18} />
+						</span>
+					}
+					activeClasses="text-primary"
+					containerClasses="flex items-center text-muted-foreground gap-2"
+					listClasses="hover:text-primary"
+					capitalizeLinks
+				/>
+				<RightSideProfile />
+				<div className="w-full md:w-auto h-full overflow-y-auto scrollbar-hidden">
+					<FeedCard />
+					<FeedCard />
+					<FeedCard />
+					<FeedCard />
+					<FeedCard />
+				</div>
 			</div>
 		</div>
 	);

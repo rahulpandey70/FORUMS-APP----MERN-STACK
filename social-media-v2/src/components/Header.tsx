@@ -24,7 +24,9 @@ export const Header = () => {
 
 	return (
 		<nav
-			className={`bg-background z-10 sticky top-0 flex items-center gap-12 w-full py-2 h-16 px-[5vw]`}
+			className={`${
+				darkMode ? "bg-background" : ""
+			} z-10 sticky top-0 flex items-center gap-12 w-full py-2 h-16 px-[5vw]`}
 		>
 			<Link href={"/"} className="flex items-center justify-center gap-2">
 				<Image src={Logo} alt="Logo" className="w-12 h-12 mt-2" />

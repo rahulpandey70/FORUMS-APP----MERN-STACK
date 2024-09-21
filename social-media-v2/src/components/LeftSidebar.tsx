@@ -53,14 +53,17 @@ export const LeftSidebar = ({ className }: { className?: string }) => {
 					variant={"outline"}
 					size={"sm"}
 					className="text-md py-6"
-					onClick={() => setPostPopupOpen((curr) => !curr)}
+					onClick={() => setPostPopupOpen(true)}
 				>
 					<span className="block xl:hidden" title="Post">
 						<PlusCircle />
 					</span>
 					<span className="hidden xl:block">Post</span>
-					{postPopupOpen ? <PostPopup /> : ""}
 				</Button>
+				<PostPopup
+					isOpen={postPopupOpen}
+					onClose={() => setPostPopupOpen(false)}
+				/>
 
 				<Button
 					variant={"destructive"}
