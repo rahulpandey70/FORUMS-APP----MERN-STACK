@@ -3,6 +3,11 @@ import { LeftSidebar } from "@/components/LeftSidebar";
 import { Breadcrumb } from "@/components/common";
 import { ChevronRight, Home } from "lucide-react";
 
+export const metadata = {
+	title: "Notification",
+	description: "All notification",
+};
+
 const Notifications = () => {
 	return (
 		<div className="relative flex h-[calc(100vh-68px)] px-[5vw] gap-4 bg-background">

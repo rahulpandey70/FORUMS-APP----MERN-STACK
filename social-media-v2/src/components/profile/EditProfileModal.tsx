@@ -32,28 +32,28 @@ export const EditProfileModal = ({
 					<InputBox
 						type="text"
 						placeholder="Name"
-						name="Name"
+						name="name"
 						disable={false}
-						id="name"
-						value="Rahul Pandey"
+						id=""
+						value=""
 						icon=<User />
 					/>
 					<InputBox
 						type="username"
 						placeholder="Username"
-						name="Username"
+						name="username"
 						disable={false}
-						id="username"
-						value="yourusername"
+						id=""
+						value=""
 						icon=<AtSign />
 					/>
 					<InputBox
 						type="email"
 						placeholder="Email"
-						name="Email"
+						name="email"
 						disable={false}
-						id="email"
-						value="yourgmail@something.com"
+						id=""
+						value=""
 						icon=<Mail />
 					/>
 					<div className="flex items-center justify-center">

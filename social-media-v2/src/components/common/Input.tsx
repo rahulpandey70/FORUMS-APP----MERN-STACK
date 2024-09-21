@@ -47,7 +47,7 @@ export const InputBox = ({
 					className={`text-muted-foreground hover:text-primary absolute top-1/2 -translate-y-1/2 left-[auto] right-4 cursor-pointer`}
 					onClick={() => setPasswordVisible((currentVal) => !currentVal)}
 				>
-					{!passwordVisible ? <Eye /> : <EyeOff />}
+					{passwordVisible ? <EyeOff /> : <Eye />}
 				</i>
 			) : (
 				""

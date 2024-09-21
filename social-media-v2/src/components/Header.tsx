@@ -11,6 +11,8 @@ import { RootState } from "@/redux/store";
 import { SelectTheme } from "./theme/ThemeToggler";
 import Image from "next/image";
 import Logo from "@/app/assets/Logo.svg";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/common/Button";
 
 export const Header = () => {
 	const [searchBoxVisibility, setSearchBoxVisibility] = useState(false);
@@ -84,17 +86,25 @@ export const Header = () => {
 				</div>
 				<hr className="gap-3 md:gap-6 min-h-[2em] w-[0.1rem] bg-border" />
 
-				<Button variant={"outline"} size={"sm"} className="px-4 py-1 text-base">
+				<Link
+					href={"/login"}
+					className={cn(
+						buttonVariants({ variant: "outline" }),
+						"px-4 py-1 text-base"
+					)}
+				>
 					SignIn
-				</Button>
+				</Link>
 
-				<Button
-					variant={"default"}
-					size={"sm"}
-					className="px-4 py-1 text-base hidden lg:block"
+				<Link
+					href={"/register"}
+					className={cn(
+						buttonVariants({ variant: "default" }),
+						"px-4 text-base hidden lg:block"
+					)}
 				>
 					SignUp
-				</Button>
+				</Link>
 			</div>
 		</nav>
 	);

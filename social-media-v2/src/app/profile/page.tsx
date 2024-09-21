@@ -5,6 +5,11 @@ import { RightSideProfile } from "@/components/profile/RIghtSideProfile";
 import { ChevronRight, Home } from "lucide-react";
 import { Breadcrumb } from "@/components/common/";
 
+export const metadata = {
+	title: "User Profile",
+	description: "User profile",
+};
+
 const Profile = () => {
 	return (
 		<div className="relative flex h-[calc(100vh-68px)] px-[5vw] gap-4 bg-background">
