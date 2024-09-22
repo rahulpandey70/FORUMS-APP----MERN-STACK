@@ -1,11 +1,21 @@
+"use client";
+
 import Link from "next/link";
+import { PostOptions } from "../common";
+import { useState } from "react";
+import { Dropdown } from "../common";
+import { Avatar } from "../common";
+
+const OptionList = ["clear"];
 
 export const Notification = () => {
+	const [optnDropdownOpen, setOptnDropdownOpen] = useState(false);
+
 	return (
 		<>
-			<div className="border border-border rounded-md p-4">
-				<div className="flex gap-2">
-					<div className="border-2 rounded-full w-10 h-10"></div>
+			<div className="border border-border rounded-md p-2">
+				<div className="relative flex items-center gap-2">
+					<Avatar className="w-10 h-10" />
 					<div className="flex md:items-center flex-col md:gap-2 md:flex-row">
 						<h3 className="text-sm font-bold text-primary">Rahul</h3>
 						<Link
@@ -15,6 +25,8 @@ export const Notification = () => {
 							@rahulpandey
 						</Link>
 					</div>
+					<PostOptions size={24} setOptnDropdownOpen={setOptnDropdownOpen} />
+					{optnDropdownOpen ? <Dropdown OptionList={OptionList} /> : ""}
 				</div>
 				<p className="my-4">@rohit like your post</p>
 			</div>

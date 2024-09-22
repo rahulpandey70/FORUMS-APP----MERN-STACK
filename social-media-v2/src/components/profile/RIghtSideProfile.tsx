@@ -1,9 +1,11 @@
+import { Avatar } from "../common";
+
 export const RightSideProfile = () => {
 	return (
 		<div className="flex w-full p-4">
 			<div className="w-full sticky top-16">
 				<div className="flex flex-row gap-2 items-center justify-center p-4 shadow">
-					<div className="w-28 h-28 md:w-32 md:h-32 border border:border rounded-full"></div>
+					<Avatar className="w-28 h-28 md:w-32 md:h-32" />
 					<div className="flex flex-col items-center md:ml-4 gap-2">
 						<h1 className="text-primary">Rahul Pandey</h1>
 						<h4 className="text-muted-foreground">@rhaulpandey</h4>

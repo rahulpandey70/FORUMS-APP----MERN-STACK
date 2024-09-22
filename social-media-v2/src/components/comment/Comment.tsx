@@ -1,27 +1,30 @@
 "use client";
 
 import { EllipsisIcon, Reply, ThumbsUp } from "lucide-react";
-import { Button } from "../common";
+import { Avatar, Button } from "../common";
 import { useState } from "react";
 import { CreateComment } from "./CreateComment";
+import { PostOptions } from "../common";
+import { Dropdown } from "../common";
+
+const OptionList = ["edit", "delete"];
 
 export const Comment = () => {
 	const [isReplyOpen, setIsReplyOpen] = useState(false);
+	const [optnDropdownOpen, setOptnDropdownOpen] = useState(false);
 
 	return (
 		<div className="relative border rounded-md p-2">
 			<div className="relative mb-2">
 				<div className="flex flex-col gap-2">
 					<div className="flex items-center gap-2">
-						<div className="w-8 h-8 rounded-full border-2"></div>
+						<Avatar className="w-8 h-8 " />
 						<span className="text-primary text-sm hidden md:flex">Rohit</span>
 						<span className="text-muted-foreground text-xs">@rohit</span>
-						<EllipsisIcon
-							size={14}
-							className="absolute right-0 cursor-pointer text-muted-foreground hover:text-primary"
-						/>
+						<PostOptions size={14} setOptnDropdownOpen={setOptnDropdownOpen} />
 					</div>
 					<p className="mx-6 text-sm">Love your thoughts.</p>
+					{optnDropdownOpen ? <Dropdown OptionList={OptionList} /> : ""}
 				</div>
 				<div className="flex items-center justify-between my-2 mx-6">
 					<Button

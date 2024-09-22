@@ -1,5 +1,5 @@
 import { AtSign, Mail, User, X } from "lucide-react";
-import { Button, InputBox } from "../common";
+import { Avatar, Button, InputBox } from "../common";
 
 export const EditProfileModal = ({
 	setShowEditModal,
@@ -22,7 +22,7 @@ export const EditProfileModal = ({
 					/>
 				</div>
 				<div className="flex items-center justify-center gap-2">
-					<div className="w-32 h-32 border border:border rounded-full"></div>
+					<Avatar className="w-32 h-32" />
 					<div className="flex flex-col gap-2">
 						<Button variant={"outline"}>Change Profile</Button>
 						<Button variant={"outline"}>Remove Profile</Button>

@@ -1,7 +1,7 @@
 "use client";
 
 import { Calendar } from "lucide-react";
-import { Button } from "./common";
+import { Avatar, Button } from "./common";
 import { EditProfileModal } from "@/components/profile/EditProfileModal";
 import { useState } from "react";
 import { ChangePasswordModal } from "./ChangePasswordModal";
@@ -14,7 +14,7 @@ export const SettingsComponent = () => {
 		<>
 			<div className="flex flex-col gap-2 items-center justify-center">
 				<div className="flex flex-col md:flex-row gap-2 items-center justify-center">
-					<div className="w-36 h-36 border border:border rounded-full"></div>
+					<Avatar className="w-36 h-36" />
 					<div className="flex flex-col md:ml-6 gap-2 mt-6 md:mt-0">
 						<Button
 							variant={"outline"}

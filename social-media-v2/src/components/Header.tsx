@@ -4,7 +4,7 @@ import { ArrowLeft, Bell, Search } from "lucide-react";
 import { Searchbar } from "./Searchbar";
 import { useState } from "react";
 import Link from "next/link";
-import { Button } from "./common";
+import { Avatar, Button } from "./common";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleTheme } from "@/redux/theme/themeSlice";
 import { RootState } from "@/redux/store";
@@ -13,9 +13,11 @@ import Image from "next/image";
 import Logo from "@/app/assets/Logo.svg";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/common/Button";
+// import { UserDropdown } from "./UserDropdown";
 
 export const Header = () => {
 	const [searchBoxVisibility, setSearchBoxVisibility] = useState(false);
+	// const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
 
 	const darkMode = useSelector((state: RootState) => state.theme.theme);
 	const dispatch = useDispatch();
@@ -37,7 +39,7 @@ export const Header = () => {
 				</span>
 			</Link>
 
-			<div className="flex items-center gap-3 md:gap-6 ml-auto">
+			<div className="relative flex items-center gap-3 md:gap-6 ml-auto">
 				<div
 					className={`absolute w-full left-0 py-3 px-[5vw] md:border-0 md:block md:relative md:inset-0 md:p-0 md:w-auto md:opacity-100 pointer-events-auto ${
 						searchBoxVisibility
@@ -86,6 +88,17 @@ export const Header = () => {
 				</div>
 				<hr className="gap-3 md:gap-6 min-h-[2em] w-[0.1rem] bg-border" />
 
+				{/* <Link
+					href={""}
+					className={cn(
+						buttonVariants({ variant: "outline" }),
+						"px-4 py-1 text-base"
+					)}
+					onClick={() => setIsUserDropdownOpen((curr) => !curr)}
+				>
+					<Avatar className="w-8 h-8" />
+				</Link> */}
+
 				<Link
 					href={"/login"}
 					className={cn(
@@ -105,6 +118,7 @@ export const Header = () => {
 				>
 					SignUp
 				</Link>
+				{/* {isUserDropdownOpen ? <UserDropdown /> : ""} */}
 			</div>
 		</nav>
 	);

@@ -6,8 +6,6 @@ interface AvatarProps {
 
 export const Avatar = ({ className }: AvatarProps) => {
 	return (
-		<div
-			className={cn("w-12 h-12 border-2 rounded-full text-center", className)}
-		></div>
+		<div className={cn("w-12 h-12 border-2 rounded-full", className)}></div>
 	);
 };
