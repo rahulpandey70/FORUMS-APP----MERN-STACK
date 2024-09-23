@@ -1,10 +1,22 @@
 import { Github, Twitter, RefreshCcw, Linkedin } from "lucide-react";
 import { User } from "./User";
 import Link from "next/link";
+import { Avatar } from "./common";
 
 export const RightSidebar = () => {
 	return (
 		<div className="hidden md:w-1/4 lg:block p-4">
+			<div className="mb-4">
+				<div className="relative flex items-center p-2">
+					<Avatar className="w-10 h-10" />
+					<div className="ml-2 flex flex-col">
+						<span className="text-primary text-sm font-semibold">Rahul</span>
+						<span className="text-muted-foreground text-xs hover:underline hover:text-popover-foreground cursor-pointer hidden xl:block">
+							@rahulpandey
+						</span>
+					</div>
+				</div>
+			</div>
 			<div className="border border-border rounded-md">
 				<h1 className="flex items-center justify-between text-base font-bold my-4 mx-4 gap-2">
 					Suggestions for you

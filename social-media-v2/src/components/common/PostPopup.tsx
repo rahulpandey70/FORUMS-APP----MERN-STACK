@@ -32,10 +32,7 @@ export const PostPopup: React.FC<PostPopupProps> = ({ isOpen, onClose }) => {
 	return (
 		<>
 			{/* Backdrop */}
-			<div
-				className="fixed inset-0 bg-opacity-100 backdrop-blur-sm z-30"
-				onClick={onClose}
-			></div>
+			<div className="fixed inset-0 bg-opacity-100 backdrop-blur-sm z-30" />
 
 			{/* Popup Modal */}
 			<div
