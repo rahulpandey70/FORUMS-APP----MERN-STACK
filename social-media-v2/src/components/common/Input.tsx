@@ -9,6 +9,7 @@ interface InputBoxProps {
 	id: string;
 	value: string;
 	placeholder: string;
+	onChange: React.ChangeEventHandler<HTMLInputElement>;
 	icon: React.ReactNode;
 	disable: boolean;
 }
@@ -19,6 +20,7 @@ export const InputBox = ({
 	id,
 	value,
 	placeholder,
+	onChange,
 	icon,
 	disable = false,
 }: InputBoxProps) => {
@@ -34,6 +36,7 @@ export const InputBox = ({
 				defaultValue={value}
 				id={id}
 				placeholder={placeholder}
+				onChange={onChange}
 				className="w-[100%] rounded-md p-4 bg-background pl-12 border border:border focus:bg-transparent focus:outline-none placeholder:text-muted-foreground"
 				disabled={disable}
 			/>

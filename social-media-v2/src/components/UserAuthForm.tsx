@@ -1,4 +1,6 @@
-import { Lock, Mail, User, User2 } from "lucide-react";
+"use client";
+
+import { Lock, Mail, User2 } from "lucide-react";
 import { InputBox } from "./common";
 import { Button, buttonVariants } from "@/components/common/Button";
 import { cn } from "@/lib/utils";
@@ -6,8 +8,70 @@ import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import Logo from "@/app/assets/Logo.svg";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+
+import { useLoginMutation, useRegisterMutation } from "@/redux/auth/apiSlice";
+import {
+	loginSuccess,
+	setError,
+	registerSuccess,
+} from "@/redux/auth/authSlice";
+import { useDispatch } from "react-redux";
+import { useState } from "react";
 
 export const UserAuthForm = ({ type }: { type: string }) => {
+	const dispatch = useDispatch();
+	const router = useRouter();
+	const [login, { isLoading: loginLoading, error: loginError }] =
+		useLoginMutation();
+	const [register, { isLoading: registerLoading, error: registerError }] =
+		useRegisterMutation();
+
+	const [formData, setFormData] = useState({
+		email: "",
+		password: "",
+		username: type === "register" ? "" : "",
+		name: type === "register" ? "" : "",
+	});
+
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setFormData({
+			...formData,
+			[e.target.name]: e.target.value,
+		});
+	};
+
+	const handleSubmit = async (e: React.FormEvent) => {
+		e.preventDefault();
+
+		if (type === "login") {
+			try {
+				const user = await login({
+					email: formData.email,
+					password: formData.password,
+				}).unwrap();
+				dispatch(loginSuccess(user));
+				router.push("/");
+			} catch (error) {
+				dispatch(setError(loginError?.data?.message || "Login Failed"));
+			}
+		} else {
+			try {
+				const newUser = await register({
+					name: formData.name,
+					email: formData.email,
+					username: formData.username,
+					password: formData.password,
+				}).unwrap();
+				dispatch(registerSuccess(newUser));
+				router.push("/");
+			} catch (error) {
+				console.error("Registration error:", error);
+				dispatch(setError(registerError?.data?.message || "Register failed"));
+			}
+		}
+	};
+
 	return (
 		<div className="container flex w-full flex-col items-center">
 			<Link
@@ -34,7 +98,7 @@ export const UserAuthForm = ({ type }: { type: string }) => {
 							: "Enter your email, name and password to create your account"}
 					</p>
 				</div>
-				<div>
+				<form className="flex flex-col space-y-4" onSubmit={handleSubmit}>
 					{type === "register" && (
 						<InputBox
 							type="name"
@@ -42,17 +106,31 @@ export const UserAuthForm = ({ type }: { type: string }) => {
 							name="name"
 							disable={false}
 							id=""
-							value=""
+							onChange={handleChange}
+							value={formData.name}
+							icon=<User2 />
+						/>
+					)}
+					{type === "register" && (
+						<InputBox
+							type="name"
+							placeholder="Username"
+							name="username"
+							disable={false}
+							id=""
+							onChange={handleChange}
+							value={formData.username}
 							icon=<User2 />
 						/>
 					)}
 					<InputBox
 						type="email"
 						placeholder="Email"
-						name="Email"
+						name="email"
 						disable={false}
 						id=""
-						value=""
+						onChange={handleChange}
+						value={formData.email}
 						icon=<Mail />
 					/>
 					<InputBox
@@ -61,13 +139,24 @@ export const UserAuthForm = ({ type }: { type: string }) => {
 						name="password"
 						disable={false}
 						id=""
-						value=""
+						onChange={handleChange}
+						value={formData.password}
 						icon=<Lock />
 					/>
-					<Button variant={"default"} className="w-full">
+					<Button
+						type="submit"
+						variant={"default"}
+						className="w-full"
+						disabled={type === "login" ? loginLoading : registerLoading}
+					>
 						{type === "login" ? "Login" : "Register"}
 					</Button>
-				</div>
+					{loginError && (
+						<p className="text-red-500 text-center">
+							{loginError?.data?.message}
+						</p>
+					)}
+				</form>
 				<p className="px-8 text-center text-sm text-muted-foreground">
 					{type === "login"
 						? "Don't have an account? "
@@ -76,7 +165,7 @@ export const UserAuthForm = ({ type }: { type: string }) => {
 						href={type === "login" ? "/register" : "/login"}
 						className="hover:text-brand underline underline-offset-4"
 					>
-						{type === "login" ? "Sign Up" : "Register"}
+						{type === "login" ? "Register" : "Login"}
 					</Link>
 				</p>
 			</div>
