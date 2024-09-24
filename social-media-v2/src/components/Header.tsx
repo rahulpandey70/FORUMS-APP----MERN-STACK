@@ -39,7 +39,7 @@ export const Header = () => {
 				</span>
 			</Link>
 
-			<div className="relative flex items-center gap-3 md:gap-6 ml-auto">
+			<div className="flex items-center gap-3 md:gap-6 ml-auto">
 				<div
 					className={`absolute w-full left-0 py-3 px-[5vw] md:border-0 md:block md:relative md:inset-0 md:p-0 md:w-auto md:opacity-100 pointer-events-auto ${
 						searchBoxVisibility
