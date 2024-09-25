@@ -23,7 +23,10 @@ export async function POST(req: NextRequest) {
 		});
 
 		if (!existedUser) {
-			return NextResponse.json({ error: "user not found" }, { status: 404 });
+			return NextResponse.json(
+				{ error: "Email doesn't exists" },
+				{ status: 404 }
+			);
 		}
 
 		// compare password
@@ -54,14 +57,31 @@ export async function POST(req: NextRequest) {
 			}
 		);
 
-		// store refresh token in database
-		await prisma.session.create({
-			data: {
+		const existingSession = await prisma.session.findFirst({
+			where: {
 				userId: existedUser.id,
-				refreshToken: refreshToken,
-				expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
 			},
 		});
+
+		if (existingSession) {
+			// If session exists, update it with the new refresh token and expiration
+			await prisma.session.update({
+				where: { id: existingSession.id },
+				data: {
+					refreshToken: refreshToken,
+					expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+				},
+			});
+		} else {
+			// If no session exists, create a new one
+			await prisma.session.create({
+				data: {
+					userId: existedUser.id,
+					refreshToken: refreshToken,
+					expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+				},
+			});
+		}
 
 		// set cookies
 		const response = NextResponse.json(

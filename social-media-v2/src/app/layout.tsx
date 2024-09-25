@@ -6,6 +6,9 @@ import { Providers } from "@/redux/provider";
 import { siteConfig } from "@/config/site";
 import { FloatingButton } from "@/components/FloatingButton";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const fontSans = FontSans({
 	subsets: ["latin"],
 	variable: "--font-sans",
@@ -39,6 +42,18 @@ export default function RootLayout({
 					<Header />
 					<main className="relative">
 						{children}
+						<ToastContainer
+							position="bottom-right"
+							autoClose={5000}
+							hideProgressBar={false}
+							newestOnTop={false}
+							closeOnClick
+							rtl={false}
+							pauseOnFocusLoss
+							draggable
+							pauseOnHover
+							theme="colored"
+						/>
 						<FloatingButton />
 					</main>
 				</Providers>

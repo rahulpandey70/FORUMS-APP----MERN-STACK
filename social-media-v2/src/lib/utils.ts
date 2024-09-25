@@ -7,8 +7,8 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const registerValidation = z.object({
-	name: z.string(),
-	username: z.string(),
+	name: z.string({ message: "Name is required" }),
+	username: z.string({ message: "Username is required" }),
 	email: z.string().email("Invalid email format"),
 	password: z
 		.string()

@@ -12,6 +12,7 @@ interface InputBoxProps {
 	onChange: React.ChangeEventHandler<HTMLInputElement>;
 	icon: React.ReactNode;
 	disable: boolean;
+	required: boolean;
 }
 
 export const InputBox = ({
@@ -23,11 +24,12 @@ export const InputBox = ({
 	onChange,
 	icon,
 	disable = false,
+	required,
 }: InputBoxProps) => {
 	const [passwordVisible, setPasswordVisible] = useState(false);
 
 	return (
-		<div className="relative w-[100%] mb-4">
+		<div className="relative w-[100%]">
 			<input
 				type={
 					type === "password" ? (passwordVisible ? "text" : "password") : type
@@ -39,6 +41,7 @@ export const InputBox = ({
 				onChange={onChange}
 				className="w-[100%] rounded-md p-4 bg-background pl-12 border border:border focus:bg-transparent focus:outline-none placeholder:text-muted-foreground"
 				disabled={disable}
+				required={required}
 			/>
 			<i
 				className={`text-muted-foreground absolute left-4 top-1/2 -translate-y-1/2`}

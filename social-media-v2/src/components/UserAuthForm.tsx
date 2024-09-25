@@ -1,10 +1,8 @@
 "use client";
 
-import { Lock, Mail, User2 } from "lucide-react";
+import { AtSign, Lock, Mail, User2 } from "lucide-react";
 import { InputBox } from "./common";
-import { Button, buttonVariants } from "@/components/common/Button";
-import { cn } from "@/lib/utils";
-import { ChevronLeft } from "lucide-react";
+import { Button } from "@/components/common/Button";
 import Link from "next/link";
 import Logo from "@/app/assets/Logo.svg";
 import Image from "next/image";
@@ -18,14 +16,19 @@ import {
 } from "@/redux/auth/authSlice";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
+import { toast } from "react-toastify";
+
+interface ApiError {
+	data: {
+		error: string | string[];
+	};
+}
 
 export const UserAuthForm = ({ type }: { type: string }) => {
 	const dispatch = useDispatch();
 	const router = useRouter();
-	const [login, { isLoading: loginLoading, error: loginError }] =
-		useLoginMutation();
-	const [register, { isLoading: registerLoading, error: registerError }] =
-		useRegisterMutation();
+	const [login, { isLoading: loginLoading }] = useLoginMutation();
+	const [register, { isLoading: registerLoading }] = useRegisterMutation();
 
 	const [formData, setFormData] = useState({
 		email: "",
@@ -51,9 +54,16 @@ export const UserAuthForm = ({ type }: { type: string }) => {
 					password: formData.password,
 				}).unwrap();
 				dispatch(loginSuccess(user));
+
+				toast.success("Login successful!");
 				router.push("/");
-			} catch (error) {
-				dispatch(setError(loginError?.data?.message || "Login Failed"));
+			} catch (error: unknown) {
+				const errorMessage = (error as ApiError)?.data.error;
+				const message = Array.isArray(errorMessage)
+					? errorMessage.join(", ")
+					: errorMessage || "Login Failed";
+				dispatch(setError(message));
+				toast.error(errorMessage);
 			}
 		} else {
 			try {
@@ -64,28 +74,22 @@ export const UserAuthForm = ({ type }: { type: string }) => {
 					password: formData.password,
 				}).unwrap();
 				dispatch(registerSuccess(newUser));
-				router.push("/");
+				toast.success("Register successful!");
+				toast.info("Now you can login");
+				router.push("/login");
 			} catch (error) {
-				console.error("Registration error:", error);
-				dispatch(setError(registerError?.data?.message || "Register failed"));
+				const errorMessage = (error as ApiError)?.data.error;
+				const message = Array.isArray(errorMessage)
+					? errorMessage.join(", ")
+					: errorMessage || "Register failed";
+				dispatch(setError(message));
+				toast.error(message);
 			}
 		}
 	};
 
 	return (
 		<div className="container flex w-full flex-col items-center">
-			<Link
-				href={type === "login" ? "/" : "/login"}
-				className={cn(
-					buttonVariants({ variant: "ghost" }),
-					"absolute left-[5vw] top-4"
-				)}
-			>
-				<>
-					{type === "login" && <ChevronLeft className="mr-2 h-4 w-4" />}
-					{type === "login" ? "Back" : "Login"}
-				</>
-			</Link>
 			<div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
 				<div className="flex flex-col mt-[22%] text-center">
 					<Image src={Logo} alt="Logo" className="mx-auto h-14 w-14" />
@@ -109,18 +113,20 @@ export const UserAuthForm = ({ type }: { type: string }) => {
 							onChange={handleChange}
 							value={formData.name}
 							icon=<User2 />
+							required={true}
 						/>
 					)}
 					{type === "register" && (
 						<InputBox
-							type="name"
+							type="username"
 							placeholder="Username"
 							name="username"
 							disable={false}
 							id=""
 							onChange={handleChange}
 							value={formData.username}
-							icon=<User2 />
+							icon=<AtSign />
+							required={true}
 						/>
 					)}
 					<InputBox
@@ -132,6 +138,7 @@ export const UserAuthForm = ({ type }: { type: string }) => {
 						onChange={handleChange}
 						value={formData.email}
 						icon=<Mail />
+						required={true}
 					/>
 					<InputBox
 						type="password"
@@ -142,6 +149,7 @@ export const UserAuthForm = ({ type }: { type: string }) => {
 						onChange={handleChange}
 						value={formData.password}
 						icon=<Lock />
+						required={true}
 					/>
 					<Button
 						type="submit"
@@ -151,11 +159,6 @@ export const UserAuthForm = ({ type }: { type: string }) => {
 					>
 						{type === "login" ? "Login" : "Register"}
 					</Button>
-					{loginError && (
-						<p className="text-red-500 text-center">
-							{loginError?.data?.message}
-						</p>
-					)}
 				</form>
 				<p className="px-8 text-center text-sm text-muted-foreground">
 					{type === "login"

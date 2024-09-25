@@ -40,9 +40,12 @@ export async function POST(req: NextRequest) {
 			{ expiresIn: "7d" }
 		);
 
+		console.log("old rf token:-", refreshToken);
+		console.log("new rf token:-", newRefreshToken);
+
 		// update the session in database
 		await prisma.session.update({
-			where: { id: session.id },
+			where: { id: session?.id },
 			data: {
 				refreshToken: newRefreshToken,
 				expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),

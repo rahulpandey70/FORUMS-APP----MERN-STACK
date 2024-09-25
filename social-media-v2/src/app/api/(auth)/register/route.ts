@@ -12,6 +12,30 @@ export async function POST(req: NextRequest) {
 		// validate inputs
 		const userData = registerValidation.parse(body);
 
+		const { name, username, email } = userData;
+		if (!name) {
+			return NextResponse.json({ error: "Name is required!" }, { status: 400 });
+		}
+		if (!username) {
+			return NextResponse.json(
+				{ error: "Username is required!" },
+				{ status: 400 }
+			);
+		}
+
+		const existingUser = await prisma.user.findFirst({
+			where: {
+				OR: [{ username }, { email }],
+			},
+		});
+
+		if (existingUser) {
+			return NextResponse.json(
+				{ error: "Username or email already taken!" },
+				{ status: 409 }
+			);
+		}
+
 		// hashing password
 		const hashedPassword = await bcrypt.hash(userData.password, 10);
 
@@ -26,7 +50,7 @@ export async function POST(req: NextRequest) {
 		});
 
 		// eslint-disable-next-line @typescript-eslint/no-unused-vars
-		const { password, ...userResponse } = newUser;
+		const { password: _, ...userResponse } = newUser;
 		return NextResponse.json(userResponse, { status: 201 });
 	} catch (error) {
 		if (error instanceof z.ZodError) {
