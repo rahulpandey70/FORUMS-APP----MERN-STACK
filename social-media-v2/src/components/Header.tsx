@@ -4,9 +4,9 @@ import { ArrowLeft, Bell, Search } from "lucide-react";
 import { Searchbar } from "./Searchbar";
 import { useState } from "react";
 import Link from "next/link";
-import { Avatar, Button } from "./common";
+import { Button } from "./common";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleTheme } from "@/redux/theme/themeSlice";
+import { setIsDarkMode } from "@/redux/theme/themeSlice";
 import { RootState } from "@/redux/store";
 import { SelectTheme } from "./theme/ThemeToggler";
 import Image from "next/image";
@@ -19,18 +19,16 @@ export const Header = () => {
 	const [searchBoxVisibility, setSearchBoxVisibility] = useState(false);
 	// const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
 
-	const darkMode = useSelector((state: RootState) => state.theme.theme);
+	const theme = useSelector((state: RootState) => state.theme.isDarkMode);
 	const dispatch = useDispatch();
 
 	const darkModeToggle = () => {
-		dispatch(toggleTheme());
+		dispatch(setIsDarkMode(theme));
 	};
 
 	return (
 		<nav
-			className={`${
-				darkMode ? "bg-background" : ""
-			} z-10 sticky top-0 flex items-center gap-12 w-full py-2 h-16 px-[5vw]`}
+			className={`z-10 sticky top-0 flex items-center gap-12 w-full py-2 h-16 px-[5vw]`}
 		>
 			<Link href={"/"} className="flex items-center justify-center gap-2">
 				<Image src={Logo} alt="Logo" className="w-12 h-12 mt-2" />
